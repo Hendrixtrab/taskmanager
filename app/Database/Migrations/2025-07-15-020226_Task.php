@@ -25,7 +25,7 @@ class Task extends Migration
                 'type' => 'TEXT',
                 'null' => true
             ],
-            'enum' => [
+            'status' => [
                 'type' => 'ENUM',
                 'constraint' => ['pendente', 'em andamento', 'concluída'],
                 'default' => 'pendente',
