@@ -55,21 +55,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 tarefas.forEach(tarefa => {
                     const tr = document.createElement("tr");
-                    tr.innerHTML = `
-                        <td>${tarefa.id}</td>
-                        <td>${tarefa.title}</td>
-                        <td>${tarefa.status}</td>
-                        <td>${tarefa.description}</td>
-                        <!-- Ícones que ficam na área "Ações" -->
-                        <td class="text-center">
-                            <button class="btn-action edit btn-editar" data-id="${tarefa.id}" title="Editar">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>
-                            <button class="btn-action delete btn-excluir" data-id="${tarefa.id}" title="Excluir">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    `;
+
+                    const tdId = document.createElement("td");
+                    tdId.textContent = tarefa.id;
+
+                    const tdTitle = document.createElement("td");
+                    tdTitle.textContent = tarefa.title;
+
+                    const tdStatus = document.createElement("td");
+                    tdStatus.textContent = tarefa.status;
+
+                    const tdDescription = document.createElement("td");
+                    tdDescription.textContent = tarefa.description;
+
+                    const tdAcoes = document.createElement("td");
+                    tdAcoes.classList.add("text-center");
+
+                    const btnEditar = document.createElement("button");
+                    btnEditar.classList.add("btn-action", "edit", "btn-editar");
+                    btnEditar.setAttribute("data-id", tarefa.id);
+                    btnEditar.setAttribute("title", "Editar");
+                    btnEditar.innerHTML = `<i class="bi bi-pencil-square"></i>`;
+
+                    const btnExcluir = document.createElement("button");
+                    btnExcluir.classList.add("btn-action", "delete", "btn-excluir");
+                    btnExcluir.setAttribute("data-id", tarefa.id);
+                    btnExcluir.setAttribute("title", "Excluir");
+                    btnExcluir.innerHTML = `<i class="bi bi-trash"></i>`;
+
+                    tdAcoes.appendChild(btnEditar);
+                    tdAcoes.appendChild(btnExcluir);
+
+                    tr.appendChild(tdId);
+                    tr.appendChild(tdTitle);
+                    tr.appendChild(tdStatus);
+                    tr.appendChild(tdDescription);
+                    tr.appendChild(tdAcoes);
+
                     tbody.appendChild(tr);
                 });
 
