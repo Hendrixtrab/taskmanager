@@ -1,6 +1,6 @@
 # Madatech Task Manager
 
-![Logo do Projeto](public/icons/favicon-32x32.png)
+![Logo do Projeto](public/icons/favicon.ico)
 
 Um gerenciador de tarefas desenvolvido com CodeIgniter 4, que inclui frontend e API RESTful.
 
@@ -22,36 +22,36 @@ ou o final desse arquivo para mais informações sobre as rotas
 1. Clone o repositório:
     - Abra um terminal e vá até a pasta que deseja armazenar o projeto
     - Execeute os comandos:
-    git clone https://github.com/Hendrixtrab/taskmanager
-    cd task-manager
+    - git clone https://github.com/Hendrixtrab/taskmanager
+    - cd task-manager
 
 2. Instale as dependências:
     - Execute o comando:
-    composer install
+    - composer install
 
 3. Crie um banco de dados mysql/mariadb para a aplicação
 
 4. Renomeie o arquivo .env-base para:
-    .env
+    - .env
 
 5. Configure o arquivo .env
     - Coloque o nome do banco recém-criado após o "=" na linha:
-    database.default.database =
+    - database.default.database =
     - Coloque as suas credenciais de conexão nas linhas:
-    database.default.username = 
-    database.default.password = 
+    - database.default.username = 
+    - database.default.password = 
     - Ajuste o port para corresponder ao utilizado na sua conexão (por padrão: 3306)
-    database.default.port = 3306
+    - database.default.port = 3306
 
 6. Crie as tabelas:
     - (Opção 1): Execute o seguinte comando no terminal:
-    php spark migrate
+    - php spark migrate
 
     - (Opção 2): Execute o arquivo app/Database/tasks.sql dentro do seu sgbd
 
 7. Inicie o servidor:
     - Execute o seguinte comando no terminal:
-    php spark serve
+    - php spark serve
 
 8. Abra a aplicação:
     - Acesse o link exibido no terminal após o último passo (por padrão: http://localhost:8080)
@@ -66,11 +66,11 @@ Erros de Extensão: O codeigniter precisa da extensão intl para funcionar adequ
 
 ### Rotas para consumo da API Rest:
 
-http://localhost:8080/api/listar -> Lista as tarefas 
-http://localhost:8080/api/cadastrar -> Cadastra uma tarefa
-http://localhost:8080/api/visualizar/(id da tarefa) -> Visualiza uma tarefa específica
-http://localhost:8080/api/editar/(id da tarefa) -> Edita uma tarefa específica
-http://localhost:8080/api/excluir/(id da tarefa) -> Deleta uma tarefa específica
+- http://localhost:8080/api/listar -> Lista as tarefas 
+- http://localhost:8080/api/cadastrar -> Cadastra uma tarefa
+- http://localhost:8080/api/visualizar/(id da tarefa) -> Visualiza uma tarefa específica
+- http://localhost:8080/api/editar/(id da tarefa) -> Edita uma tarefa específica
+- http://localhost:8080/api/excluir/(id da tarefa) -> Deleta uma tarefa específica
 
 
 
