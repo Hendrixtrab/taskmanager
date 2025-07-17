@@ -23,7 +23,7 @@ ou o final desse arquivo para mais informações sobre as rotas
     - Abra um terminal e vá até a pasta que deseja armazenar o projeto
     - Execeute os comandos:
     - git clone https://github.com/Hendrixtrab/taskmanager
-    - cd task-manager
+    - cd taskmanager
 
 2. Instale as dependências:
     - Execute o comando:
