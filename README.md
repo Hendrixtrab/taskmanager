@@ -1,68 +1,77 @@
-# CodeIgniter 4 Application Starter
+# Madatech Task Manager
 
-## What is CodeIgniter?
+![Logo do Projeto](public/icons/favicon-32x32.png)
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Um gerenciador de tarefas desenvolvido com CodeIgniter 4, que inclui frontend e API RESTful.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Visão Geral
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Sistema web para gerenciamento de tarefas, o frontend permite uma interação direta com a API Restful,
+que pode também ser consumida de forma independente. Cheque o arquivo app/Config/Routes.php 
+ou o final desse arquivo para mais informações sobre as rotas
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
 
-## Installation & updates
+### Pré-requisitos
+- PHP 7.4 ou superior
+- Composer
+- MySQL/MariaDB
+- Git (opcional)
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### Instalação
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+1. Clone o repositório:
+    - Abra um terminal e vá até a pasta que deseja armazenar o projeto
+    - Execeute os comandos:
+    git clone https://github.com/Hendrixtrab/taskmanager
+    cd task-manager
 
-## Setup
+2. Instale as dependências:
+    - Execute o comando:
+    composer install
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+3. Crie um banco de dados mysql/mariadb para a aplicação
 
-## Important Change with index.php
+4. Renomeie o arquivo .env-base para:
+    .env
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+5. Configure o arquivo .env
+    - Coloque o nome do banco recém-criado após o "=" na linha:
+    database.default.database =
+    - Coloque as suas credenciais de conexão nas linhas:
+    database.default.username = 
+    database.default.password = 
+    - Ajuste o port para corresponder ao utilizado na sua conexão (por padrão: 3306)
+    database.default.port = 3306
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+6. Crie as tabelas:
+    - (Opção 1): Execute o seguinte comando no terminal:
+    php spark migrate
 
-**Please** read the user guide for a better explanation of how CI4 works!
+    - (Opção 2): Execute o arquivo app/Database/tasks.sql dentro do seu sgbd
 
-## Repository Management
+7. Inicie o servidor:
+    - Execute o seguinte comando no terminal:
+    php spark serve
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+8. Abra a aplicação:
+    - Acesse o link exibido no terminal após o último passo (por padrão: http://localhost:8080)
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
 
-## Server Requirements
+### Possíveis Erros:
+Problemas com o SSL: É possível que sua conexão bloqueie alguma instalação do composer, caso isso aconteça, tente desligar seu antivírus e execute o comando novamente.
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+Verifique atentamente os ports utilizados na aplicação e confira se batem com os utilizados em seu computador, o codeigniter 4 irá usar portas subsequentes (8081, 8082, ...) caso a 8080 já esteja sendo utilizada.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+Erros de Extensão: O codeigniter precisa da extensão intl para funcionar adequadamente, caso enfrente erros na execução dessa aplicação, tente acessar seu arquivo php.ini e procure pela linha: extension=intl, e certifique-se de que não há um ";" no começo da linha. 
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+### Rotas para consumo da API Rest:
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+http://localhost:8080/api/listar -> Lista as tarefas 
+http://localhost:8080/api/cadastrar -> Cadastra uma tarefa
+http://localhost:8080/api/visualizar/(id da tarefa) -> Visualiza uma tarefa específica
+http://localhost:8080/api/editar/(id da tarefa) -> Edita uma tarefa específica
+http://localhost:8080/api/excluir/(id da tarefa) -> Deleta uma tarefa específica
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
+
+Caso possua dúvidas, contate: hendrikguarneri1234@gmail.com ou hendrikprofissional@gmail.com

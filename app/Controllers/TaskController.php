@@ -1,5 +1,9 @@
 <?php
 
+/*
+    Controller principal, utilizado para estruturar os métodos da API Rest
+*/
+
 namespace App\Controllers;
 
 use App\Models\TaskModel;
@@ -12,17 +16,17 @@ class TaskController extends ResourceController
     protected $modelName = TaskModel::class;
     protected $format = 'json';
 
-    //Lista todas as tarefas 
+    // Lista todas as tarefas 
     public function index()
     {
         return $this->respond($this->model->findAll());
     }
 
-    //Cria uma nova tarefa 
+    // Cria uma nova tarefa 
     public function create()
     {
         $dados = $this->request->getJSON(true);
-
+        
         if (!$this->model->insert($dados)) {
             return $this->failValidationErrors($this->model->errors());
         }
@@ -30,7 +34,7 @@ class TaskController extends ResourceController
         return $this->respondCreated(['message' => 'Tarefa criada com sucesso.']);
     }
 
-    //Visualiza uma tarefa específica
+    // Visualiza uma tarefa específica
     public function show($id = null)
     {
         $tarefa = $this->model->find($id);
@@ -42,7 +46,7 @@ class TaskController extends ResourceController
         return $this->respond($tarefa);
     }
 
-    //Atualiza uma tarefa existente
+    // Atualiza uma tarefa existente
     public function update($id = null)
     {
         $dados = $this->request->getJSON(true);
@@ -57,7 +61,7 @@ class TaskController extends ResourceController
         return $this->respond(['message' => 'Tarefa atualizada com sucesso.']);
     }
 
-    //Exclui uma tarefa existente
+    // Exclui uma tarefa existente
     public function delete($id = null)
     {
         if(!$this->model->find($id)){

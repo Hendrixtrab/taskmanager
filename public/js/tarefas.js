@@ -1,22 +1,27 @@
+/* 
+    Arquivo que contém a base do JavaScript utilizado no frontend,
+    a view que utiliza esse arquivo está em app/Views/tasks/index.php
+*/
+
 document.addEventListener("DOMContentLoaded", () => {
     // Modais
     const modalTarefa = new bootstrap.Modal(document.getElementById("modalTarefa"));
     const modalConfirmarExclusao = new bootstrap.Modal(document.getElementById("confirmarExclusaoModal"));
     const feedbackModal = new bootstrap.Modal(document.getElementById("feedbackModal"));
     
-    // Variável para armazenar o ID da tarefa a ser excluída
+    // Variável que armazena o ID da tarefa a ser excluída
     let tarefaIdParaExcluir = null;
 
     // Formulário de tarefa
     const form = document.getElementById("form-tarefa");
 
-    // Função para mostrar feedback
+    // Função que mostra o feedback
     function mostrarFeedback(mensagem, tipo = 'success') {
         const modal = document.getElementById('feedbackModal');
         const header = modal.querySelector('.modal-header');
         const icon = modal.querySelector('.modal-body i');
         
-        // Remove todas as classes de cor
+        // Remove classes css
         header.className = 'modal-header';
         icon.className = 'bi';
         
@@ -37,13 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
         feedbackModal.show();
     }
 
-    // Carrega a tabela
+    // Carrega a tabela via axios
+    
     function carregarTarefas() {
         axios.get(API_LISTAR)
+        // ATENÇÃO: API_LISTAR, API_CADASTRAR, API_VISUALIZAR, API_ATUALIZAR e API_EXCLUIR
+        // são constantes passadas dentro da view app/Views/tasks/index.php
             .then(response => {
                 const tarefas = response.data;
                 const tbody = document.querySelector("#tabela-tarefas tbody");
-                tbody.innerHTML = "";
+                tbody.innerHTML = ""; 
 
                 tarefas.forEach(tarefa => {
                     const tr = document.createElement("tr");
@@ -52,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${tarefa.title}</td>
                         <td>${tarefa.status}</td>
                         <td>${tarefa.description}</td>
+                        <!-- Ícones que ficam na área "Ações" -->
                         <td class="text-center">
                             <button class="btn-action edit btn-editar" data-id="${tarefa.id}" title="Editar">
                                 <i class="bi bi-pencil-square"></i>

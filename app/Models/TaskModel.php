@@ -1,4 +1,7 @@
 <?php
+/*
+    Arquivo que serve como model da tabela 'tasks'
+*/
 
 namespace App\Models;
 
@@ -53,6 +56,7 @@ class TaskModel extends Model
     protected $allowCallbacks = true;
     protected $beforeInsert   = ['definirStatusPadrao'];
 
+    // Seta o valor de default do banco caso o status não seja selecionado no frontend
     protected function definirStatusPadrao(array $data)
     {
         if (empty($data['data']['status'])) {
@@ -62,7 +66,7 @@ class TaskModel extends Model
         return $data;
     }
 
-    // Callbacks não utilizados
+    // Callbacks -> não utilizados
     /*
     protected $afterInsert    = [];
     protected $beforeUpdate   = [];

@@ -1,12 +1,16 @@
 <?php
 
+/*
+    Arquivo que define as rotas do projeto
+*/
+
 use CodeIgniter\Router\RouteCollection;
 
-//Rota do Frontend
+// Rota do Frontend
 $routes->get('/', 'Frontend\TaskInterfaceController::index');
 
-//Rotas da API
-$routes->group('api', function($routes)
+// Rotas da API
+$routes->group('api', function($routes) 
 {
     $routes->get('listar', 'TaskController::index');
     $routes->get('visualizar/(:num)', 'TaskController::show/$1');

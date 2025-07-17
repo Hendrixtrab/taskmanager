@@ -1,3 +1,8 @@
+/* 
+    Arquivo utilizado como CSS para o frontend, a view que o utiliza está em:
+    app/Views/tasks/index.php
+*/
+
 .title {
     position: absolute;
     left: 50%;
