@@ -15,7 +15,7 @@
     box-shadow: 2px 2px 20px #036282;
 }
 
-.container{
+.intro{
     margin-top: 100px;
     display: flex;
     justify-content: center;
@@ -43,4 +43,57 @@
 
 .modal-title{
     color: #059acc;
+}
+
+#tabela-tarefas{
+    font-family: "Figtree", sans-serif;
+}
+
+#tabela-tarefas th{
+    background-color: #059acc;
+    color: white;
+    table-layout: fixed;
+}
+
+#tabela-tarefas td{
+    word-break: break-word;
+}
+
+.modal-success .modal-title {
+    color: #28a745 !important; 
+}
+
+.btn-primary {
+    background-color: #059acc;
+    border-color: #059acc;
+}
+
+.btn-primary:hover {
+    background-color: #0486b3;
+    border-color: #0486b3;
+}
+
+.modal-danger .modal-title {
+    color: #dc3545 !important; 
+}
+
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border: none;
+    background: none;
+    color: #6c757d;
+    transition: color 0.15s ease-in-out;
+}
+
+.btn-action:hover {
+    color: #059acc;
+}
+
+.btn-action.edit:hover {
+    color: #28a745;
+}
+
+.btn-action.delete:hover {
+    color: #dc3545;
 }

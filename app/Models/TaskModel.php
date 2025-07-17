@@ -41,7 +41,7 @@ class TaskModel extends Model
         'title' => [
             'required' => 'O título da tarefa é obrigatório.',
             'min_length' => 'O título deve possuir ao menos 1 caractere.',
-            'max_lenght' => 'O título pode ter no máximo 255 caracteres.'
+            'max_length' => 'O título pode ter no máximo 255 caracteres.'
         ],
         'status' => [
             'in_list' => 'O status da tarefa deve ser: pendente, em andamento ou concluída.'
@@ -50,10 +50,20 @@ class TaskModel extends Model
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
-    // Callbacks - Não utilizados
-    /*
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
+    protected $beforeInsert   = ['definirStatusPadrao'];
+
+    protected function definirStatusPadrao(array $data)
+    {
+        if (empty($data['data']['status'])) {
+            $data['data']['status'] = 'pendente';
+        }
+
+        return $data;
+    }
+
+    // Callbacks não utilizados
+    /*
     protected $afterInsert    = [];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];

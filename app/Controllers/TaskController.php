@@ -22,6 +22,7 @@ class TaskController extends ResourceController
     public function create()
     {
         $dados = $this->request->getJSON(true);
+
         if (!$this->model->insert($dados)) {
             return $this->failValidationErrors($this->model->errors());
         }
@@ -29,13 +30,30 @@ class TaskController extends ResourceController
         return $this->respondCreated(['message' => 'Tarefa criada com sucesso.']);
     }
 
+    //Visualiza uma tarefa específica
+    public function show($id = null)
+    {
+        $tarefa = $this->model->find($id);
+
+        if (!$tarefa) {
+            return $this->failNotFound('Tarefa não encontrada.');
+        }
+
+        return $this->respond($tarefa);
+    }
+
     //Atualiza uma tarefa existente
     public function update($id = null)
     {
         $dados = $this->request->getJSON(true);
-        if(!$this->model->update($id, $dados)){
-            return $this->model->failValidationErrors($this->model->errors());
+
+        if (!$this->model->find($id)) {
+            return $this->failNotFound('Tarefa não encontrada.');
         }
+        if(!$this->model->update($id, $dados)){
+            return $this->failValidationErrors($this->model->errors());
+        }
+
         return $this->respond(['message' => 'Tarefa atualizada com sucesso.']);
     }
 
@@ -45,6 +63,7 @@ class TaskController extends ResourceController
         if(!$this->model->find($id)){
             return $this->failNotFound('Tarefa não encontrada');
         }
+        
         $this->model->delete($id);
         return $this->respondDeleted(['message' => 'Tarefa excluída com sucesso.']);
     }
