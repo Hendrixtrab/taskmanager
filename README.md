@@ -16,7 +16,7 @@ ou o final desse arquivo para mais informações sobre as rotas
 - Composer
 - MySQL/MariaDB
 - Git (opcional)
-
+- OBSERVAÇÃO: Vá até o seu arquivo php.ini, abra-o como documento de texto e ative a extensão "extension=intl" removendo o ";" no início da linha
 ### Instalação
 
 1. Clone o repositório:
@@ -62,7 +62,7 @@ Problemas com o SSL: É possível que sua conexão bloqueie alguma instalação 
 
 Verifique atentamente os ports utilizados na aplicação e confira se batem com os utilizados em seu computador, o codeigniter 4 irá usar portas subsequentes (8081, 8082, ...) caso a 8080 já esteja sendo utilizada.
 
-Erros de Extensão: O codeigniter precisa da extensão intl para funcionar adequadamente, caso enfrente erros na execução dessa aplicação, tente acessar seu arquivo php.ini e procure pela linha: extension=intl, e certifique-se de que não há um ";" no começo da linha. 
+Erros de Extensão: Como mencionado ao começo, o codeigniter precisa da extensão intl para funcionar adequadamente, caso enfrente erros na execução dessa aplicação, tente acessar seu arquivo php.ini e procure pela linha: extension=intl, e certifique-se de que não há um ";" no começo da linha. Certifique-se também de que a extensão zip também está habilitada. 
 
 ### Rotas para consumo da API Rest:
 
